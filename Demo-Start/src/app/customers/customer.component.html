@@ -4,9 +4,10 @@
   </div>
 
   <div class="card-body">
-    <form novalidate
+    <form novalidate 
           (ngSubmit)="save(signupForm)"
           #signupForm="ngForm">
+          <!-- novalidate to browser do not make the validation, because angular going to do  -->
 
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"

@@ -11,6 +11,7 @@ import { Customer } from './customer';
 export class CustomerComponent implements OnInit {
   customerForm: FormGroup;    //form module
   customer = new Customer();  //data module
+  emailMessage: string;
 
   constructor() { }
 

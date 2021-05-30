@@ -63,7 +63,9 @@
               type="email"
               placeholder="Email (required)"
               formControlName="email"
-              [ngClass]="{'is-invalid': emailMessage }" />
+              [ngClass]="{'is-invalid': (customerForm.get('email').touched ||
+                                        customerForm.get('email').dirty) &&
+                                        !customerForm.get('email').valid }" />
           <span class="invalid-feedback">
             <span *ngIf="customerForm.get('email').errors?.required">
               Please enter your email address.

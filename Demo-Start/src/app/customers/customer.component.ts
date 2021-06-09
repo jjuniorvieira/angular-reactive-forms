@@ -24,10 +24,13 @@ export class CustomerComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.customerForm = this.fb.group({
+    this.customerForm = this.fb.group({//FormGroup here
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.maxLength(50)]],
-      email: ['', [Validators.required, Validators.email]],
+      emailGroup: this.fb.group({//nested formGroup here
+        email: ['', [Validators.required, Validators.email]],
+        confirmEmail: ['', Validators.required],
+      }),
       phone: '',
       notification: 'email',
       rating: [null, ratingRange(1,5)],

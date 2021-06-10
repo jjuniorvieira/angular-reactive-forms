@@ -3,6 +3,20 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from
 
 import { Customer } from './customer';
 
+function emailMatcher(c: AbstractControl): { [key: string]: boolean } | null {
+  const emailControl = c.get('email');
+  const confirmControl = c.get('confirmEmail');
+
+  if (emailControl.pristine || confirmControl.pristine) { //if one of those fields wasnt touch yet
+    return null;
+  }
+
+  if (emailControl.value === confirmControl.value) {//has not yet been touch 
+    return null; // null if everything is okay
+  }
+  return { match: true };//true means - the validation is broken
+}
+
 function ratingRange(min: number, max: number): ValidatorFn {
   return (c: AbstractControl): { [key: string]: boolean } | null => {
     if (c.value !== null && (isNaN(c.value) || c.value < min || c.value > max)) {
@@ -30,7 +44,7 @@ export class CustomerComponent implements OnInit {
       emailGroup: this.fb.group({//nested formGroup here
         email: ['', [Validators.required, Validators.email]],
         confirmEmail: ['', Validators.required],
-      }),
+      },{validators: emailMatcher}),
       phone: '',
       notification: 'email',
       rating: [null, ratingRange(1,5)],

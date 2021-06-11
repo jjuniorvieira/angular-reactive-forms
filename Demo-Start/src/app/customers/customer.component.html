@@ -57,41 +57,33 @@
       <div formGroupName="emailGroup">
         <div class="form-group row mb-2">
           <label class="col-md-2 col-form-label"
-                for="emailId">Email</label>
+                 for="emailId">Email</label>
           <div class="col-md-8">
             <input class="form-control"
-                id="emailId"
-                type="email"
-                placeholder="Email (required)"
-                formControlName="email"
-                [ngClass]="{'is-invalid': customerForm.get('emailGroup').errors ||
-                                            ((customerForm.get('emailGroup.email').touched ||
-                                              customerForm.get('emailGroup.email').dirty) &&
-                                                !customerForm.get('emailGroup.email').valid) }" />
+                   id="emailId"
+                   type="email"
+                   placeholder="Email (required)"
+                   formControlName="email"
+                   [ngClass]="{'is-invalid': emailMessage }" />
             <span class="invalid-feedback">
-              <span *ngIf="customerForm.get('emailGroup.email').errors?.required">
-                Please enter your email address.
-              </span>
-              <span *ngIf="customerForm.get('emailGroup.email').errors?.email">
-                Please enter a valid email address.
-              </span>
+              {{ emailMessage }}
             </span>
           </div>
         </div>
 
         <div class="form-group row mb-2">
           <label class="col-md-2 col-form-label"
-                for="confirmEmailId">Confirm Email</label>
+                 for="confirmEmailId">Confirm Email</label>
           <div class="col-md-8">
             <input class="form-control"
-                  id="confirmEmailId"
-                  type="email"
-                  placeholder="Confirm Email (required)"
-                  formControlName="confirmEmail"
-                  [ngClass]="{'is-invalid': customerForm.get('emailGroup').errors ||
-                                            ((customerForm.get('emailGroup.confirmEmail').touched || 
-                                                customerForm.get('emailGroup.confirmEmail').dirty) && 
-                                                  !customerForm.get('emailGroup.confirmEmail').valid) }" />
+                   id="confirmEmailId"
+                   type="email"
+                   placeholder="Confirm Email (required)"
+                   formControlName="confirmEmail"
+                   [ngClass]="{'is-invalid': customerForm.get('emailGroup').errors ||
+                                             ((customerForm.get('emailGroup.confirmEmail').touched || 
+                                              customerForm.get('emailGroup.confirmEmail').dirty) && 
+                                              !customerForm.get('emailGroup.confirmEmail').valid) }" />
             <span class="invalid-feedback">
               <span *ngIf="customerForm.get('emailGroup.confirmEmail').errors?.required">
                 Please confirm your email address.

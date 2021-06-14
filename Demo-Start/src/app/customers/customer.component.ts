@@ -56,7 +56,13 @@ export class CustomerComponent implements OnInit {
       phone: '',
       notification: 'email',
       rating: [null, ratingRange(1,5)],
-      sendCatalog: true
+      sendCatalog: true,
+      addressType: 'home',
+      street1: ['', Validators.required],
+      street2: '',
+      city: '',
+      state: '',
+      zip: ''
     });
 
     this.customerForm.get('notification').valueChanges.subscribe(

@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChildren, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray, Validators, FormControlName } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; // to read param from the router
 
 import { Observable, Subscription, fromEvent, merge } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -35,7 +35,7 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
-              private router: Router,
+              private router: Router, // to read param from the router
               private productService: ProductService) {
 
     // Defines all of the validation messages for the form.
@@ -61,8 +61,8 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      productName: ['', [Validators.required,
-                         Validators.minLength(3),
+      productName: ['', [Validators.required, //those default values below are empty because it will be retrieved from service
+                         Validators.minLength(3), 
                          Validators.maxLength(50)]],
       productCode: ['', Validators.required],
       starRating: ['', NumberValidators.range(1, 5)],
@@ -70,13 +70,13 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
       description: ''
     });
 
-    // Read the product Id from the route parameter
+    // Read the product Id from the route parameter // begin
     this.sub = this.route.paramMap.subscribe(
       params => {
         const id = +params.get('id');
         this.getProduct(id);
       }
-    );
+    );// ending
   }
 
   ngOnDestroy(): void {

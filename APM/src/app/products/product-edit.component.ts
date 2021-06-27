@@ -65,7 +65,7 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
                          Validators.minLength(3), 
                          Validators.maxLength(50)]],
       productCode: ['', Validators.required],
-      starRating: ['', NumberValidators.range(1, 5)],
+      starRating: ['', NumberValidators.range(1, 5)], //no instance is needed
       tags: this.fb.array([]),
       description: ''
     });

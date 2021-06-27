@@ -50,12 +50,13 @@
                  type="text"
                  placeholder="Rating (1-5)"
                  formControlName="starRating"
-                 [ngClass]="{'is-invalid': displayMessage.starRating}" />
+                 [ngClass]="{'is-invalid': displayMessage.starRating}" /> <!-- validations going to be applied here   -->
           <span class="invalid-feedback">
             {{displayMessage.starRating}}
           </span>
         </div>
       </div>
+      
 
       <div formArrayName="tags">
         <div class="form-group row mb-2"

@@ -2,12 +2,12 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 import { Product } from './product';
 
-export class ProductData implements InMemoryDbService {
+export class ProductData implements InMemoryDbService { // ProductData to mock data 
 
   createDb(): { products: Product[]} {
     const products: Product[] = [
       {
-        id: 1,
+        id: 1, //id is required
         productName: 'Leaf Rake',
         productCode: 'GDN-0011',
         releaseDate: 'March 19, 2018',

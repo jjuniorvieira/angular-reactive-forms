@@ -7,7 +7,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { Product } from './product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' //register the service to root application. Everyone can access it.
 })
 export class ProductService {
   private productsUrl = 'api/products';

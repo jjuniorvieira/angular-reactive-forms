@@ -108,7 +108,7 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getProduct(id: number): void {
-    this.productService.getProduct(id)
+    this.productService.getProduct(id)//populating the form with data
       .subscribe({
         next: (product: Product) => this.displayProduct(product),
         error: err => this.errorMessage = err

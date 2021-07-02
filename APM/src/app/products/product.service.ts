@@ -27,7 +27,7 @@ export class ProductService {
       return of(this.initializeProduct());
     }
     const url = `${this.productsUrl}/${id}`;
-    return this.http.get<Product>(url)
+    return this.http.get<Product>(url) //populating the form with data
       .pipe(
         tap(data => console.log('getProduct: ' + JSON.stringify(data))),
         catchError(this.handleError)

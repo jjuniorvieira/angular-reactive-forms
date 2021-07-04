@@ -36,7 +36,7 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private router: Router, // to read param from the router
-              private productService: ProductService) {
+              private productService: ProductService) {// inject service product
 
     // Defines all of the validation messages for the form.
     // These could instead be retrieved from a file or database.
@@ -73,7 +73,7 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
     // Read the product Id from the route parameter // begin
     this.sub = this.route.paramMap.subscribe(
       params => {
-        const id = +params.get('id');
+        const id = +params.get('id'); // Read the product Id from the route parameter 
         this.getProduct(id);
       }
     );// ending
@@ -108,7 +108,7 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getProduct(id: number): void {
-    this.productService.getProduct(id)//populating the form with data
+    this.productService.getProduct(id)//populating the form with data. Using parameter from to fetch product id.
       .subscribe({
         next: (product: Product) => this.displayProduct(product),
         error: err => this.errorMessage = err

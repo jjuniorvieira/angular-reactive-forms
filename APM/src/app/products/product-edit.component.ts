@@ -154,8 +154,8 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
 
   saveProduct(): void {
     if (this.productForm.valid) {
-      if (this.productForm.dirty) {
-        const p = { ...this.product, ...this.productForm.value };
+      if (this.productForm.dirty) { // save if is dirty
+        const p = { ...this.product, ...this.productForm.value }; // spread operation to populate p only with changed value
 
         if (p.id === 0) {
           this.productService.createProduct(p)
@@ -180,7 +180,7 @@ export class ProductEditComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onSaveComplete(): void {
     // Reset the form to clear the flags
-    this.productForm.reset();
+    this.productForm.reset(); //we have to reset the form in order to not be dirty anymore
     this.router.navigate(['/products']);
   }
 }

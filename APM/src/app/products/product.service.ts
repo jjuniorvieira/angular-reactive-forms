@@ -57,11 +57,11 @@ export class ProductService {
   updateProduct(product: Product): Observable<Product> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const url = `${this.productsUrl}/${product.id}`;
-    return this.http.put<Product>(url, product, { headers })
+    return this.http.put<Product>(url, product, { headers }) //using in memory api we dont get any return
       .pipe(
         tap(() => console.log('updateProduct: ' + product.id)),
         // Return the product on an update
-        map(() => product),
+        map(() => product), //map return to product
         catchError(this.handleError)
       );
   }
